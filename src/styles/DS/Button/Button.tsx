@@ -3,20 +3,20 @@ import { styled } from "@stitches/react";
 
 interface ButtonProps {
   size?: "small" | "regular";
-  text: string;
+  children: string;
   buttonType?: "filled" | "outlined" | "disabled";
   onClick?: () => void;
 }
 
 export const Button = ({
   size = "regular",
-  text,
+  children,
   buttonType = "filled",
   ...props
 }: ButtonProps) => {
   return (
     <Btn type="button" size={size} buttonType={buttonType} {...props}>
-      {text}
+      {children}
     </Btn>
   );
 };

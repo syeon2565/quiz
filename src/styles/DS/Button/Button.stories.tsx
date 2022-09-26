@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
 export const story = Template.bind({});
 story.args = {
-  text: "Button",
+  children: "Button",
 };
 
 story.storyName = "Button";
