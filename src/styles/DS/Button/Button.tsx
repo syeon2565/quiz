@@ -5,6 +5,7 @@ interface ButtonProps {
   size?: "small" | "regular";
   children: string;
   buttonType?: "filled" | "outlined" | "disabled";
+  disabled?: boolean;
   onClick?: () => void;
 }
 
@@ -12,10 +13,17 @@ export const Button = ({
   size = "regular",
   children,
   buttonType = "filled",
+  disabled = false,
   ...props
 }: ButtonProps) => {
   return (
-    <Btn type="button" size={size} buttonType={buttonType} {...props}>
+    <Btn
+      type="button"
+      size={size}
+      buttonType={buttonType}
+      disabled={disabled}
+      {...props}
+    >
       {children}
     </Btn>
   );

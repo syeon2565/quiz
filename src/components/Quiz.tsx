@@ -47,6 +47,7 @@ const Quiz = () => {
                 <StyledButton
                   buttonType={clicked ? "disabled" : "outlined"}
                   size="small"
+                  disabled={clicked}
                   onClick={() => {
                     handleCheckAnswer(i, randomIndex);
                   }}
