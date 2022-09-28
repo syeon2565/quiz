@@ -1,17 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 
-type QuizState = {
-  quizData: unknown;
-  quizLoading: boolean;
-  quizError: unknown;
+type Quiz = {
+  category: string;
+  type: string;
+  question: string;
+  difficulty: string;
+  correct_answer: string;
+  incorrect_answers: string[];
+};
+
+type Quizzes = {
+  response_code: number;
+  results: Quiz[];
 };
 
 const useQuiz = () => {
   const {
     data: quizData,
     isLoading: quizLoading,
-    error: quizError,
-  } = useQuery(["?amount=10"], {
+    isError: quizError,
+  } = useQuery<Quizzes>(["?amount=10&type=multiple"], {
     refetchOnWindowFocus: false,
   });
 

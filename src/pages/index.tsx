@@ -1,25 +1,22 @@
 import type { NextPage } from "next";
-import { Button } from "../styles/DS/Button/Button";
-import { styled } from "@stitches/react";
-import Layout from "../components/Layout";
+import useQuizStore from "../store/useStore";
+import Main from "../components/Main";
+import Quiz from "../components/Quiz";
+import Result from "../components/Result";
 
 const Home: NextPage = () => {
-  return (
-    <Layout>
-      <Title>Quiz</Title>
-      <StyledButton>퀴즈풀기</StyledButton>
-    </Layout>
-  );
+  const gameStatus = useQuizStore(state => state.getGameStatus());
+
+  switch (gameStatus) {
+    case "notStarted":
+      return <Main />;
+    case "playing":
+      return <Quiz />;
+    case "ended":
+      return <Result />;
+    default:
+      throw Error("something went wrong");
+  }
 };
-
-const Title = styled("div", {
-  display: "flex",
-  justifyContent: "center",
-  fontSize: "100px",
-});
-
-const StyledButton = styled(Button, {
-  margin: "100px",
-});
 
 export default Home;
