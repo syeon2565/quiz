@@ -26,7 +26,7 @@ const queryClient = new QueryClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <ToastContainer
         position="top-right"
         autoClose={1000}
