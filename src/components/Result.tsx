@@ -18,7 +18,7 @@ const Result = () => {
 
   return (
     <Layout>
-      <Div color="answer"> 정답 {score} 개</Div>
+      <Div color="answer">정답 {score} 개</Div>
       <Div color="wrong">오답 {10 - score} 개</Div>
       <Div color="time">
         소요시간 {Math.floor((+endTime - +startTime) / 1000)} 초
