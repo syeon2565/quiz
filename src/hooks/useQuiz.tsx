@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import Axios from "~lib/Axios";
 
 type Quiz = {
   category: string;
@@ -14,12 +15,22 @@ type Quizzes = {
   results: Quiz[];
 };
 
+const getQuizs = async () => {
+  try {
+    const res = await Axios.get("?amount=10&type=multiple");
+    return res;
+  } catch (e) {
+    alert(e);
+  }
+};
+
 const useQuiz = () => {
   const {
     data: quizData,
     isLoading: quizLoading,
     isError: quizError,
-  } = useQuery<Quizzes>(["?amount=10&type=multiple"], {
+    ...rest
+  } = useQuery(["?amount=10&type=multiple"], getQuizs, {
     refetchOnWindowFocus: false,
   });
 
@@ -27,6 +38,7 @@ const useQuiz = () => {
     quizData,
     quizLoading,
     quizError,
+    ...rest,
   };
 };
 
