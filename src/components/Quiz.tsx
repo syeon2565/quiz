@@ -8,7 +8,6 @@ import Result from "./Result";
 
 const Quiz = () => {
   const { quizData, quizLoading } = useQuiz();
-
   const handleNextBtn = useQuizStore(state => state.onNextQuiz);
   const onSubmit = useQuizStore(state => state.onSubmit);
   const currentNum = useQuizStore(state => state.currentQuizNum);
@@ -23,7 +22,7 @@ const Quiz = () => {
   useEffect(() => {
     if (quizData) {
       const { question, incorrect_answers, correct_answer } =
-        quizData.results[currentNum];
+        quizData.data.results[currentNum];
       setCurrentQuestion(question);
 
       const clonedAnswer = [...incorrect_answers];
@@ -33,7 +32,7 @@ const Quiz = () => {
   }, [quizData, currentNum, quizLoading]);
 
   return (
-    <Layout>
+    <Layout dataTestid="quiz">
       {quizLoading ? (
         "Loading..."
       ) : (

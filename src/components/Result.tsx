@@ -17,7 +17,7 @@ const Result = () => {
   ];
 
   return (
-    <Layout>
+    <Layout dataTestid="result">
       <Div color="answer">정답 {score} 개</Div>
       <Div color="wrong">오답 {10 - score} 개</Div>
       <Div color="time">

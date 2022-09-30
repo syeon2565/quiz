@@ -8,7 +8,7 @@ const Main = () => {
   const handleQuizStart = useQuizStore(state => state.startQuiz);
 
   return (
-    <Layout>
+    <Layout dataTestid="main">
       <Title>Quiz</Title>
       <StyledButton onClick={handleQuizStart}>퀴즈풀기</StyledButton>
     </Layout>

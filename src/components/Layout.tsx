@@ -1,8 +1,11 @@
 import { FC, PropsWithChildren } from "react";
 import { styled } from "@stitches/react";
 
-const Layout: FC<PropsWithChildren> = ({ children }) => {
-  return <StyledLayout>{children}</StyledLayout>;
+const Layout: FC<PropsWithChildren<{ dataTestid?: string }>> = ({
+  dataTestid,
+  children,
+}) => {
+  return <StyledLayout data-testid={dataTestid}>{children}</StyledLayout>;
 };
 
 const StyledLayout = styled("div", {
