@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Result from "../components/Result";
+import Result from "~components/Result";
 import "@testing-library/jest-dom";
 
 describe("Result test", () => {

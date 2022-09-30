@@ -1,9 +1,9 @@
 import React from "react";
 import Layout from "./Layout";
 import { styled } from "@stitches/react";
-import useQuizStore from "../store/useStore";
+import useQuizStore from "~store/useStore";
 import { RadialChart } from "react-vis";
-import { Button } from "../styles/DS/Button/Button";
+import { Button } from "~styles/DS/Button/Button";
 
 const Result = () => {
   const score = useQuizStore(state => state.score);

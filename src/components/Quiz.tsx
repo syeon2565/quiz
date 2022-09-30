@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
 import { styled } from "@stitches/react";
-import { Button } from "../styles/DS/Button/Button";
-import useQuiz from "../hooks/useQuiz";
-import useQuizStore from "../store/useStore";
+import { Button } from "~styles/DS/Button/Button";
+import useQuiz from "~hooks/useQuiz";
+import useQuizStore from "~store/useStore";
 import Result from "./Result";
 
 const Quiz = () => {

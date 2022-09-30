@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import userEvent from "@testing-library/user-event";
-import Index from "../pages";
+import Index from "~pages/index";
 import "@testing-library/jest-dom";
-import { queryClient } from "../pages/_app";
+import { queryClient } from "~pages/_app";
 
 describe("Index page test", () => {
   it("처음에 메인 컴포넌트가 보인다", () => {
