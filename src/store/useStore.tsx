@@ -1,5 +1,5 @@
-import create from "zustand";
 import { toast } from "react-toastify";
+import create from "zustand";
 
 type QuizState = {
   startTime: null | Date;
@@ -40,7 +40,8 @@ const useQuizStore = create<QuizState>((set, get) => ({
     set(state => {
       if (!state.startTime) {
         return {};
-      } else if (state.currentQuizNum >= 9) {
+      }
+      if (state.currentQuizNum >= 9) {
         return {};
       }
       return {
@@ -61,10 +62,9 @@ const useQuizStore = create<QuizState>((set, get) => ({
         state.score += 1;
         toast.success("축하드려요! 정답입니다.");
         return { score: state.score, clicked: true };
-      } else {
-        toast.error("아쉽지만, 오답입니다!");
-        return { clicked: true };
       }
+      toast.error("아쉽지만, 오답입니다!");
+      return { clicked: true };
     }),
   ReStartQuiz: () =>
     set(() => {

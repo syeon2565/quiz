@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import Result from "~components/Result";
+
 import "@testing-library/jest-dom";
+import Result from "~components/Result";
 
 describe("Result test", () => {
   it("정답 갯수가 보인다", () => {

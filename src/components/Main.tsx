@@ -1,8 +1,10 @@
-import React from "react";
-import Layout from "./Layout";
-import { Button } from "~styles/DS/Button/Button";
 import { styled } from "@stitches/react";
+import React from "react";
+
+import Layout from "./Layout";
+
 import useQuizStore from "~store/useStore";
+import { Button } from "~styles/DS/Button/Button";
 
 const Main = () => {
   const handleQuizStart = useQuizStore(state => state.startQuiz);

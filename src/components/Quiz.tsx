@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Layout from "./Layout";
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable camelcase */
 import { styled } from "@stitches/react";
-import { Button } from "~styles/DS/Button/Button";
+import React, { useEffect, useState } from "react";
+
+import Layout from "./Layout";
+import Result from "./Result";
+
 import useQuiz from "~hooks/useQuiz";
 import useQuizStore from "~store/useStore";
-import Result from "./Result";
+import { Button } from "~styles/DS/Button/Button";
 
 const Quiz = () => {
   const { quizData, quizLoading } = useQuiz();

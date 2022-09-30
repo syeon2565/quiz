@@ -1,5 +1,5 @@
-import { FC, PropsWithChildren } from "react";
 import { styled } from "@stitches/react";
+import type { FC, PropsWithChildren } from "react";
 
 const Layout: FC<PropsWithChildren<{ dataTestid?: string }>> = ({
   dataTestid,

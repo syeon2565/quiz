@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
-import useQuizStore from "~store/useStore";
+
 import Main from "~components/Main";
 import Quiz from "~components/Quiz";
 import Result from "~components/Result";
+import useQuizStore from "~store/useStore";
 
 const Home: NextPage = () => {
   const gameStatus = useQuizStore(state => state.getGameStatus());

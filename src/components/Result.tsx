@@ -1,8 +1,10 @@
-import React from "react";
-import Layout from "./Layout";
 import { styled } from "@stitches/react";
-import useQuizStore from "~store/useStore";
+import React from "react";
 import { RadialChart } from "react-vis";
+
+import Layout from "./Layout";
+
+import useQuizStore from "~store/useStore";
 import { Button } from "~styles/DS/Button/Button";
 
 const Result = () => {
@@ -23,7 +25,7 @@ const Result = () => {
       <Div color="time">
         소요시간 {Math.floor((+endTime - +startTime) / 1000)} 초
       </Div>
-      <RadialChart data={data} width={250} height={250} showLabels={true} />
+      <RadialChart data={data} width={250} height={250} showLabels />
       <Button onClick={handleQuizStart}>다시 풀러가기</Button>
     </Layout>
   );
