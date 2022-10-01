@@ -15,7 +15,9 @@ describe("Quiz test", () => {
     const { result } = renderHook(() => useQuiz(), { wrapper });
 
     // TODO ) 간헐적으로 toBe(true)아닌 경우가 나온다..
-    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    await waitFor(() => expect(result.current.isSuccess).toBe(true), {
+      timeout: 5000,
+    });
     // 데이터가 계속 바뀌므로 데이터여부만 체크하는것으로..데이터를 잘가지고오는지 판단
     await waitFor(() => expect(result.current.quizData).not.toBeUndefined());
   });
