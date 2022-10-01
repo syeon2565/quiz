@@ -21,16 +21,17 @@ const Quiz = () => {
 
   const clicked = useQuizStore(state => state.clicked);
   const handleCheckAnswer = useQuizStore(state => state.checkedAnswer);
-  const randomIndex = Math.floor(Math.random() * 4);
+  const [randomIndex, setRandomIndex] = useState(0);
 
   useEffect(() => {
     if (quizData) {
       const { question, incorrect_answers, correct_answer } =
         quizData.data.results[currentNum];
       setCurrentQuestion(question);
-
       const clonedAnswer = [...incorrect_answers];
-      clonedAnswer.splice(randomIndex, 0, correct_answer);
+      const randomNumber = Math.floor(Math.random() * 4);
+      setRandomIndex(randomNumber);
+      clonedAnswer.splice(randomNumber, 0, correct_answer);
       setAnswers(clonedAnswer);
     }
   }, [quizData, currentNum, quizLoading]);
