@@ -13,28 +13,24 @@ type Quiz = {
   incorrect_answers: string[];
 };
 
-type Quizzes = {
+export type Quizzes = {
   response_code: number;
   results: Quiz[];
 };
 
-const getQuizs = async () => {
-  try {
-    const res = await Axios.get("?amount=10&type=multiple");
-    return res;
-  } catch (e) {
-    alert(e);
-  }
+export const getQuizzes = async (): Promise<Quizzes> => {
+  const res = await Axios.get<Quizzes>("?amount=10&type=multiple");
+  return res.data;
 };
 
-const useQuiz = () => {
+const useQuiz = (initialData: Quizzes) => {
   const {
     data: quizData,
     isLoading: quizLoading,
     isError: quizError,
     ...rest
-  } = useQuery(["?amount=10&type=multiple"], getQuizs, {
-    refetchOnWindowFocus: false,
+  } = useQuery<Quizzes>(["quiz"], getQuizzes, {
+    initialData,
   });
 
   return {

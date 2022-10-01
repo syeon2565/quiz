@@ -1,17 +1,21 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable camelcase */
 import { styled } from "@stitches/react";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import Layout from "./Layout";
 import Result from "./Result";
 
-import useQuiz from "~hooks/useQuiz";
+import useQuiz, { Quizzes } from "~hooks/useQuiz";
 import useQuizStore from "~store/useStore";
 import { Button } from "~styles/DS/Button/Button";
 
-const Quiz = () => {
-  const { quizData, quizLoading } = useQuiz();
+type QuizProps = {
+  initialData: Quizzes;
+};
+
+const Quiz: FC<QuizProps> = ({ initialData }) => {
+  const { quizData, quizLoading } = useQuiz(initialData);
   const handleNextBtn = useQuizStore(state => state.onNextQuiz);
   const onSubmit = useQuizStore(state => state.onSubmit);
   const currentNum = useQuizStore(state => state.currentQuizNum);
@@ -26,7 +30,7 @@ const Quiz = () => {
   useEffect(() => {
     if (quizData) {
       const { question, incorrect_answers, correct_answer } =
-        quizData.data.results[currentNum];
+        quizData.results[currentNum];
       setCurrentQuestion(question);
       const clonedAnswer = [...incorrect_answers];
       const randomNumber = Math.floor(Math.random() * 4);
@@ -34,7 +38,7 @@ const Quiz = () => {
       clonedAnswer.splice(randomNumber, 0, correct_answer);
       setAnswers(clonedAnswer);
     }
-  }, [quizData, currentNum, quizLoading]);
+  }, [quizData, currentNum]);
 
   return (
     <Layout dataTestid="quiz">
