@@ -38,12 +38,7 @@ const useQuizStore = create<QuizState>((set, get) => ({
     }),
   onNextQuiz: () =>
     set(state => {
-      if (!state.startTime) {
-        return {};
-      }
-      if (state.currentQuizNum >= 9) {
-        return {};
-      }
+      toast.dismiss();
       return {
         currentQuizNum: state.currentQuizNum + 1,
         clicked: false,
@@ -51,6 +46,7 @@ const useQuizStore = create<QuizState>((set, get) => ({
     }),
   onSubmit: () =>
     set(state => {
+      toast.dismiss();
       return {
         endTime: new Date(),
         currentQuizNum: state.currentQuizNum + 1,
