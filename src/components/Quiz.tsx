@@ -24,7 +24,7 @@ const Quiz: FC<QuizProps> = ({ initialData }) => {
   const [answers, setAnswers] = useState<string[]>([]);
 
   const clicked = useQuizStore(state => state.clicked);
-  const handleCheckAnswer = useQuizStore(state => state.checkedAnswer);
+  const checkedAnswer = useQuizStore(state => state.checkedAnswer);
   const [randomIndex, setRandomIndex] = useState(0);
 
   useEffect(() => {
@@ -39,6 +39,18 @@ const Quiz: FC<QuizProps> = ({ initialData }) => {
       setAnswers(clonedAnswer);
     }
   }, [quizData, currentNum]);
+
+  answers.map((a, i) =>
+    localStorage.setItem(`Q${currentNum + 1} answer ${i + 1}`, a),
+  );
+  localStorage.setItem(`Q${currentNum + 1} answer`, `${randomIndex + 1}`);
+
+  const handleCheckAnswer = (i: number, randomIndex: number) => {
+    checkedAnswer(i, randomIndex);
+    if (i != randomIndex) {
+      localStorage.setItem(`question${currentNum + 1}`, currentQuestion);
+    }
+  };
 
   return (
     <Layout dataTestid="quiz">
@@ -56,9 +68,7 @@ const Quiz: FC<QuizProps> = ({ initialData }) => {
                   buttonType={clicked ? "disabled" : "outlined"}
                   size="small"
                   disabled={clicked}
-                  onClick={() => {
-                    handleCheckAnswer(i, randomIndex);
-                  }}
+                  onClick={() => handleCheckAnswer(i, randomIndex)}
                   key={i}
                 >
                   {answer}

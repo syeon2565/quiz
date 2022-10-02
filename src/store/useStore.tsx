@@ -4,6 +4,7 @@ import create from "zustand";
 type QuizState = {
   startTime: null | Date;
   endTime: null | Date;
+  wrongNumber?: number[];
   getGameStatus: () => "notStarted" | "playing" | "ended";
   currentQuizNum: number;
   clicked: boolean;
@@ -18,6 +19,7 @@ type QuizState = {
 const useQuizStore = create<QuizState>((set, get) => ({
   startTime: null,
   endTime: null,
+  wrongNumber: [],
   getGameStatus: () => {
     if (!get().startTime) {
       return "notStarted";
@@ -60,16 +62,21 @@ const useQuizStore = create<QuizState>((set, get) => ({
         return { score: state.score, clicked: true };
       }
       toast.error("아쉽지만, 오답입니다!");
-      return { clicked: true };
+      state.wrongNumber?.push(state.currentQuizNum + 1);
+      return {
+        clicked: true,
+      };
     }),
   ReStartQuiz: () =>
     set(() => {
+      localStorage.clear();
       return {
         startTime: new Date(),
         endTime: null,
         currentQuizNum: 0,
         clicked: false,
         score: 0,
+        wrongNumber: [],
       };
     }),
 }));
