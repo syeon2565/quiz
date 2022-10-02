@@ -17,12 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      <ToastContainer
-        position="top-right"
-        autoClose={10}
-        hideProgressBar
-        limit={1}
-      />
+      <ToastContainer position="top-right" autoClose={1000} hideProgressBar />
     </QueryClientProvider>
   );
 };
