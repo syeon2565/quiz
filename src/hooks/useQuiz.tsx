@@ -31,6 +31,7 @@ const useQuiz = (initialData: Quizzes) => {
     ...rest
   } = useQuery<Quizzes>(["quiz"], getQuizzes, {
     initialData,
+    staleTime: 1000,
   });
 
   return {

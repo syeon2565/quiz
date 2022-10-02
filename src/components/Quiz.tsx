@@ -15,7 +15,7 @@ type QuizProps = {
 };
 
 const Quiz: FC<QuizProps> = ({ initialData }) => {
-  const { quizData, quizLoading } = useQuiz(initialData);
+  const { quizData, quizLoading, isFetching } = useQuiz(initialData);
   const handleNextBtn = useQuizStore(state => state.onNextQuiz);
   const onSubmit = useQuizStore(state => state.onSubmit);
   const currentNum = useQuizStore(state => state.currentQuizNum);
@@ -54,7 +54,7 @@ const Quiz: FC<QuizProps> = ({ initialData }) => {
 
   return (
     <Layout dataTestid="quiz">
-      {quizLoading ? (
+      {quizLoading || isFetching ? (
         "Loading..."
       ) : (
         <>
