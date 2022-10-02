@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import { styled } from "@stitches/react";
 import React, { FC, useEffect, useState } from "react";
-
+import { decode } from "html-entities";
 import Layout from "./Layout";
 import Result from "./Result";
 
@@ -31,12 +31,12 @@ const Quiz: FC<QuizProps> = ({ initialData }) => {
     if (quizData) {
       const { question, incorrect_answers, correct_answer } =
         quizData.results[currentNum];
-      setCurrentQuestion(question);
+      setCurrentQuestion(decode(question));
       const clonedAnswer = [...incorrect_answers];
       const randomNumber = Math.floor(Math.random() * 4);
       setRandomIndex(randomNumber);
       clonedAnswer.splice(randomNumber, 0, correct_answer);
-      setAnswers(clonedAnswer);
+      setAnswers(clonedAnswer.map(a => decode(a)));
     }
   }, [quizData, currentNum]);
 
