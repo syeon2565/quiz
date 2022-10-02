@@ -23,7 +23,7 @@ export const getQuizzes = async (): Promise<Quizzes> => {
   return res.data;
 };
 
-const useQuiz = (initialData: Quizzes) => {
+const useQuiz = (initialData?: Quizzes) => {
   const {
     data: quizData,
     isLoading: quizLoading,

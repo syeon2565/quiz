@@ -11,7 +11,7 @@ import useQuizStore from "~store/useStore";
 import { Button } from "~styles/DS/Button/Button";
 
 type QuizProps = {
-  initialData: Quizzes;
+  initialData?: Quizzes;
 };
 
 const Quiz: FC<QuizProps> = ({ initialData }) => {
