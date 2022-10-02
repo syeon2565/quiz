@@ -42,7 +42,7 @@ const Result = () => {
             </Answer>
           ))}
           <AnswerNum>
-            정답 : {localStorage.getItem(`Q${questionNum + 1} answer`)}
+            정답 : {localStorage.getItem(`Q${questionNum} answer`)}
           </AnswerNum>
         </WrongAnswerNotes>
       ))}
