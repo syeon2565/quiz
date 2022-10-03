@@ -44,3 +44,16 @@ jest, testing-library/react
 ```shell
 NEXT_PUBLIC_BASE_URL = 주소
 ```
+
+### 실행 방법
+
+```shell
+패키지 설치
+yarn
+
+실행
+yarn dev
+
+테스트 실행 || 커버리지 확인
+yarn jest || yarn jest --coverage
+```
