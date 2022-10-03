@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 
 import Index from "~pages/index";
 import "@testing-library/jest-dom";
-import data from "./data.json";
+import data from "./mock/data.json";
 
 const queryClient = new QueryClient();
 
